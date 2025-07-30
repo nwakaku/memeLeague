@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Trophy,
   Crown,
@@ -128,14 +128,9 @@ const LeaderboardPage = () => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [tipAmount, setTipAmount] = useState("");
   const [tipMessage, setTipMessage] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [selectedReaction, setSelectedReaction] = useState("");
   const [currentPage, setCurrentPage] = useState("leaderboard");
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const tabs = [
     {
@@ -227,7 +222,7 @@ const LeaderboardPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-50 to-indigo-100 dark:from-purple-900 dark:via-gray-900 dark:to-indigo-900 p-4 pb-20">
         {/* Header Section */}
         <div
-          className={`mb-8 text-center transition-all duration-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          className="mb-8 text-center transition-all duration-300"
         >
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mb-4 shadow-2xl animate-pulse">
             <Trophy size={32} className="text-white" />
@@ -242,7 +237,7 @@ const LeaderboardPage = () => {
 
         {/* Tab Navigation */}
         <div
-          className={`mb-6 transition-all duration-700 delay-200 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          className="mb-6 transition-all duration-300"
         >
           <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-2 flex shadow-xl border border-white/20">
             {tabs.map(({ id, label, icon, color }) => (
@@ -270,7 +265,7 @@ const LeaderboardPage = () => {
 
         {/* Filters */}
         <div
-          className={`mb-6 transition-all duration-700 delay-300 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+          className="mb-6 transition-all duration-300"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-2">
@@ -328,8 +323,8 @@ const LeaderboardPage = () => {
                 index === 0
                   ? "border-yellow-400 shadow-yellow-200/50 dark:shadow-yellow-500/20"
                   : "border-white/20 hover:border-purple-300/50"
-              } ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-              style={{ transitionDelay: `${(index + 4) * 100}ms` }}
+              }`}
+              style={{ transitionDelay: `${(index + 1) * 50}ms` }}
             >
               {/* Background Animation for Top 3 */}
               {index < 3 && (

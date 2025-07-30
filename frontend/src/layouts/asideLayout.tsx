@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Heart,
@@ -26,14 +26,9 @@ export function AsideLayout({
 }: AsideLayoutProps) {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isLoaded, setIsLoaded] = useState(false);
 
   // Get current page from URL path
   const currentPage = location.pathname.split("/")[1] || "dashboard";
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const navigationItems = [
     {
@@ -61,7 +56,7 @@ export function AsideLayout({
       color: "from-green-500 to-emerald-500",
     },
     {
-      id: "profile",
+      id: "dashboard",
       icon: User,
       label: "Profile",
       color: "from-purple-500 to-indigo-500",
@@ -83,8 +78,7 @@ export function AsideLayout({
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         className={`fixed top-20 left-4 z-50 p-3 rounded-xl transition-all duration-300 md:hidden
           bg-default-100 backdrop-blur-lg border border-default-200 text-default-700
-          hover:bg-default-200 hover:scale-110 shadow-2xl
-          ${isLoaded ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}
+          hover:bg-default-200 hover:scale-110 shadow-2xl`}
       >
         {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
@@ -104,7 +98,7 @@ export function AsideLayout({
           md:relative md:left-0 md:top-0 md:bottom-0
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
           w-72 md:w-20 lg:w-72
-          bg-default-50 backdrop-blur-2xl border-r border-default-200
+          bg-default-50 backdrop-blur-2xl
           shadow-2xl
         `}
       >
@@ -116,9 +110,8 @@ export function AsideLayout({
                 key={id}
                 onClick={() => handlePageChange(id)}
                 className={`
-                    w-full flex items-center gap-4 py-4 px-4 rounded-2xl transition-all duration-300
+                    w-full flex items-center gap-4 shadow border border-default-200  shadow-2xl py-4 px-4 rounded-2xl transition-all duration-300
                     group hover:scale-[1.02] hover:shadow-2xl
-                    ${isLoaded ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"}
                     ${
                       currentPage === id
                         ? `bg-gradient-to-r ${color} text-white shadow-2xl shadow-purple-500/25`
@@ -126,7 +119,7 @@ export function AsideLayout({
                     }
                   `}
                 style={{
-                  transitionDelay: `${index * 100}ms`,
+                  transitionDelay: `${index * 50}ms`,
                 }}
               >
                 <div

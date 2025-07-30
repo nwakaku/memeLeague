@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Vote,
   Clock,
@@ -137,13 +137,8 @@ const DAOPage = () => {
   const [showVoteModal, setShowVoteModal] = useState(false);
   const [voteChoice, setVoteChoice] = useState("");
   const [stakeAmount, setStakeAmount] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);
   const [sortBy, setSortBy] = useState("trending");
   const [filterCategory, setFilterCategory] = useState("all");
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   const formatTimeLeft = (seconds) => {
     const days = Math.floor(seconds / 86400);
@@ -197,7 +192,7 @@ const DAOPage = () => {
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
           <div
-            className={`transition-all duration-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className="transition-all duration-300"
           >
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-8 mb-8 text-center shadow-2xl border border-white/20 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 via-blue-400/10 to-indigo-400/10 animate-pulse rounded-3xl" />
@@ -256,7 +251,7 @@ const DAOPage = () => {
 
           {/* Navigation Tabs */}
           <div
-            className={`transition-all duration-700 delay-200 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className="transition-all duration-300"
           >
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-2 mb-8 shadow-xl border border-white/20">
               <div className="flex flex-wrap gap-2">
@@ -281,7 +276,7 @@ const DAOPage = () => {
 
           {/* Filters */}
           <div
-            className={`transition-all duration-700 delay-300 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className="transition-all duration-300"
           >
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-4 mb-8 shadow-xl border border-white/20">
               <div className="flex flex-wrap gap-4 items-center justify-between">
@@ -330,7 +325,7 @@ const DAOPage = () => {
                   key={proposal.id}
                   className={`bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-6 shadow-2xl border border-white/20 relative overflow-hidden transition-all duration-700 hover:shadow-3xl hover:scale-[1.02] ${
                     proposal.trending ? "ring-2 ring-yellow-400/50" : ""
-                  } ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                  }`}
                   style={{ animationDelay: `${400 + index * 100}ms` }}
                 >
                   {/* Trending Badge */}
@@ -491,7 +486,7 @@ const DAOPage = () => {
               {pastProposals.map((proposal, index) => (
                 <div
                   key={proposal.id}
-                  className={`bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 transition-all duration-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 transition-all duration-300"
                   style={{ animationDelay: `${400 + index * 100}ms` }}
                 >
                   <div className="flex items-center justify-between">
@@ -595,7 +590,7 @@ const DAOPage = () => {
 
           {/* Create Proposal CTA */}
           <div
-            className={`transition-all duration-700 delay-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+            className="transition-all duration-300"
           >
             <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-8 text-center shadow-2xl border border-white/20 relative overflow-hidden mt-8">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 via-blue-400/10 to-indigo-400/10 animate-pulse rounded-3xl" />

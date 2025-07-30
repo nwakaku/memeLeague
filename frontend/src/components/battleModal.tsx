@@ -276,8 +276,8 @@ const BattleModals = ({
   // Create Battle Modal
   if (showCreateBattle) {
     return (
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto">
-        <div className="bg-white dark:bg-gray-800 rounded-3xl max-w-lg w-full mx-4 shadow-2xl border border-white/20 my-8">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto ">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl max-w-lg w-full mx-4 shadow-2xl border border-white/20 my-8 mt-120">
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">

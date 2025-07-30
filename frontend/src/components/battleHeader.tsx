@@ -60,19 +60,18 @@ const BattleHeader = ({
   setAutoRefresh,
   setShowCreateBattle,
   mockBattles,
-  isLoaded,
 }) => {
   return (
     <>
       {/* Hero Section */}
       <div
-        className={`mb-8 text-center transition-all duration-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+        className="mb-8 text-center transition-all duration-300"
       >
         <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-red-500 to-orange-500 mb-6 shadow-2xl relative">
           <Sword size={36} className="text-white animate-pulse" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-spin rounded-full" />
         </div>
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent mb-3">
+        <h1 className="text-5xl font-bold text-orange-500 mb-3">
           ⚔️ Battle Arena ⚔️
         </h1>
         <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto">
@@ -134,7 +133,7 @@ const BattleHeader = ({
 
       {/* Battle Type Filters */}
       <div
-        className={`mb-8 transition-all duration-700 delay-200 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+        className="mb-8 transition-all duration-300"
       >
         <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-2 flex shadow-xl border border-white/20 overflow-x-auto">
           {battleTypes.map(({ id, label, icon, color }) => (
@@ -162,7 +161,7 @@ const BattleHeader = ({
 
       {/* Settings & Action Bar */}
       <div
-        className={`mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-700 delay-300 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+        className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-300"
       >
         <div className="flex items-center space-x-4">
           <button

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Heart } from "lucide-react";
 import { Navbar } from "@/components/navbar";
 import { AsideLayout } from "./asideLayout";
@@ -19,11 +19,6 @@ export default function DefaultLayout({
   showSidebar = true, // Default to true, but can be overridden
 }: DefaultLayoutProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   return (
     <div className="relative h-screen overflow-hidden container mx-auto">
@@ -65,9 +60,7 @@ export default function DefaultLayout({
           <div className="min-h-full">
             {/* Content wrapper */}
             <div className="max-w-7xl mx-auto px-4 py-4">
-              <div
-                className={`transition-all duration-700 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-              >
+              <div className="transition-all duration-300">
                 {children || (
                   <div className="text-center py-20">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 mb-6 shadow-2xl">

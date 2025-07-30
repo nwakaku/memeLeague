@@ -186,7 +186,6 @@ const BattlePage = () => {
   const [selectedBattle, setSelectedBattle] = useState(null);
   const [selectedPet, setSelectedPet] = useState(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [userBalance] = useState(5000);
 
@@ -198,8 +197,6 @@ const BattlePage = () => {
   const [voteAmount, setVoteAmount] = useState("");
 
   useEffect(() => {
-    setIsLoaded(true);
-
     // Auto-refresh battle data every 10 seconds
     const interval = setInterval(() => {
       if (autoRefresh) {
@@ -247,8 +244,8 @@ const BattlePage = () => {
 
   return (
     <DefaultLayout showSidebar={true}>
-      <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-50 to-yellow-100 dark:from-red-900 dark:via-gray-900 dark:to-orange-900 p-4 pb-20">
-        <div className="max-w-7xl mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-50 to-yellow-100 dark:from-red-900 dark:via-gray-900 dark:to-orange-900 p-2 sm:p-4 pb-20">
+        <div className="max-w-7xl mx-auto flex flex-col gap-4">
           {/* Battle Header Component */}
           <BattleHeader
             activeFilter={activeFilter}
@@ -259,19 +256,17 @@ const BattlePage = () => {
             setAutoRefresh={setAutoRefresh}
             setShowCreateBattle={setShowCreateBattle}
             mockBattles={mockBattles}
-            isLoaded={isLoaded}
           />
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-8">
             {/* Left Column - Battle Cards */}
-            <div className="xl:col-span-2 space-y-6">
+            <div className="xl:col-span-2 flex flex-col gap-4">
               {filteredBattles.map((battle, index) => (
                 <BattleCard
                   key={battle.id}
                   battle={battle}
                   index={index}
-                  isLoaded={isLoaded}
                   handleVote={handleVote}
                   handleSpectate={handleSpectate}
                   handleStats={handleStats}
@@ -281,19 +276,18 @@ const BattlePage = () => {
               {/* No Battles State */}
               {filteredBattles.length === 0 && (
                 <div
-                  className={`bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-12 text-center shadow-2xl border border-white/20 transition-all duration-700 delay-500 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                  className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-4 sm:p-8 md:p-12 text-center shadow-2xl border border-white/20 flex flex-col items-center justify-center gap-4"
                 >
-                  <div className="text-8xl mb-6">⚔️</div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                    No {activeFilter === "all" ? "" : activeFilter} battles
-                    right now
+                  <div className="text-6xl sm:text-8xl mb-4">⚔️</div>
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    No {activeFilter === "all" ? "" : activeFilter} battles right now
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-8">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
                     Be the first to start an epic battle in the arena!
                   </p>
                   <button
                     onClick={() => setShowCreateBattle(true)}
-                    className="bg-gradient-to-r from-red-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all"
+                    className="bg-gradient-to-r from-red-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto"
                   >
                     Create Battle
                   </button>
@@ -302,36 +296,33 @@ const BattlePage = () => {
 
               {/* Enter Battle CTA */}
               <div
-                className={`bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-3xl p-8 text-center shadow-2xl border border-white/20 relative overflow-hidden transition-all duration-700 delay-600 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl p-4 sm:p-8 text-center shadow-2xl border border-white/20 relative overflow-hidden transition-all duration-300 flex flex-col items-center gap-4"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 via-orange-400/10 to-red-400/10 animate-pulse rounded-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/10 via-orange-400/10 to-red-400/10 animate-pulse rounded-2xl" />
 
-                <div className="relative z-10">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-2xl">
-                    <span className="text-3xl animate-bounce">⚔️</span>
+                <div className="relative z-10 flex flex-col items-center gap-4">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-2xl">
+                    <span className="text-2xl sm:text-3xl animate-bounce">⚔️</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     Ready to Join the Battle?
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
-                    Create your meme pet warrior and compete for $GUI glory in
-                    the ultimate battle arena!
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-md mx-auto">
+                    Create your meme pet warrior and compete for $GUI glory in the ultimate battle arena!
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
                     <button
                       onClick={() => setShowCreateBattle(true)}
-                      className="bg-gradient-to-r from-red-500 to-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all flex items-center space-x-2 group"
+                      className="bg-gradient-to-r from-red-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto flex items-center space-x-2 group"
                     >
                       <span className="text-xl">🚀</span>
                       <span>Enter Arena</span>
-                      <span className="text-xl group-hover:animate-bounce">
-                        ⚔️
-                      </span>
+                      <span className="text-xl group-hover:animate-bounce">⚔️</span>
                     </button>
 
-                    <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all flex items-center space-x-2">
+                    <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:shadow-xl transform hover:scale-105 transition-all w-full sm:w-auto flex items-center space-x-2">
                       <span className="text-xl">📚</span>
                       <span>Learn Rules</span>
                     </button>
@@ -341,8 +332,8 @@ const BattlePage = () => {
             </div>
 
             {/* Right Column - Battle Stats */}
-            <div className="xl:col-span-1">
-              <BattleStats battles={filteredBattles} isLoaded={isLoaded} />
+            <div className="xl:col-span-1 mt-4 xl:mt-0">
+              <BattleStats battles={filteredBattles} />
             </div>
           </div>
 
@@ -363,33 +354,33 @@ const BattlePage = () => {
             handleSubmitVote={handleSubmitVote}
             userBalance={userBalance}
           />
-        </div>
 
-        {/* Background Animations */}
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-red-300/20 rounded-full blur-xl animate-pulse" />
-          <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300/20 rounded-full blur-xl animate-pulse delay-1000" />
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-300/20 rounded-full blur-xl animate-pulse delay-2000" />
-          <div className="absolute bottom-40 right-1/3 w-36 h-36 bg-red-300/20 rounded-full blur-xl animate-pulse delay-3000" />
-        </div>
+          {/* Background Animations */}
+          <div className="fixed inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute top-20 left-10 w-32 h-32 bg-red-300/20 rounded-full blur-xl animate-pulse" />
+            <div className="absolute top-40 right-20 w-48 h-48 bg-orange-300/20 rounded-full blur-xl animate-pulse delay-1000" />
+            <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-300/20 rounded-full blur-xl animate-pulse delay-2000" />
+            <div className="absolute bottom-40 right-1/3 w-36 h-36 bg-red-300/20 rounded-full blur-xl animate-pulse delay-3000" />
+          </div>
 
-        {/* Custom CSS for marquee animation */}
-        <style jsx>{`
-          @keyframes marquee {
-            0% {
-              transform: translateX(100%);
+          {/* Custom CSS for marquee animation */}
+          <style jsx>{`
+            @keyframes marquee {
+              0% {
+                transform: translateX(100%);
+              }
+              100% {
+                transform: translateX(-100%);
+              }
             }
-            100% {
-              transform: translateX(-100%);
+            .animate-marquee {
+              animation: marquee 30s linear infinite;
             }
-          }
-          .animate-marquee {
-            animation: marquee 30s linear infinite;
-          }
-          .shadow-3xl {
-            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
-          }
-        `}</style>
+            .shadow-3xl {
+              box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+            }
+          `}</style>
+        </div>
       </div>
     </DefaultLayout>
   );

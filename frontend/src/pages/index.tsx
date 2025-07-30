@@ -21,10 +21,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import DefaultLayout from "@/layouts/default";
+import { useNavigate } from "react-router-dom";
 
 const MemePetLeagueLanding = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -97,14 +100,12 @@ const MemePetLeagueLanding = () => {
     <DefaultLayout showSidebar={false}>
       <>
         {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center min-h-screen">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 min-w-full mx-auto">
+        <section className="relative flex flex-col items-center justify-center min-h-screen max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 ">
             <div className="flex flex-col justify-center md:col-span-3">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black mb-6 flex flex-col items-center md:items-start">
                 <div className="flex items-center mb-2">
-                  <span className="inline-block mr-3 animate-bounce text-5xl sm:text-6xl">
-                    🐾
-                  </span>
+                 
                   <span className="md:text-8xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 dark:from-pink-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
                     Welcome to
                   </span>
@@ -126,7 +127,7 @@ const MemePetLeagueLanding = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center mb-12">
                 <Button
-                  size="lg"
+                  size="lg" onPress={() => navigate("/dashboard")}
                   className="bg-gradient-to-r from-pink-500 to-purple-600 dark:from-pink-400 dark:to-purple-500 hover:from-pink-600 hover:to-purple-700 dark:hover:from-pink-500 dark:hover:to-purple-600 text-white font-bold px-8 py-4 text-lg transform hover:scale-105 transition-all duration-300 shadow-2xl"
                 >
                   <Rocket className="w-5 h-5 mr-2" />
@@ -318,7 +319,7 @@ const MemePetLeagueLanding = () => {
                   <h3 className="text-xl font-bold mb-3 text-red-500 dark:text-red-300">
                     Spend
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-default-600 dark:text-default-300">
                     Feed, evolve, style, and compete
                   </p>
                 </CardBody>
@@ -330,7 +331,7 @@ const MemePetLeagueLanding = () => {
                   <h3 className="text-xl font-bold mb-3 text-green-500 dark:text-green-300">
                     Earn
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-default-600 dark:text-default-300">
                     Win leagues, get tips, gain seasonal rewards
                   </p>
                 </CardBody>
@@ -342,7 +343,7 @@ const MemePetLeagueLanding = () => {
                   <h3 className="text-xl font-bold mb-3 text-blue-500 dark:text-blue-300">
                     Stake
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-default-600 dark:text-default-300">
                     Vote on rules, new features, and community lore
                   </p>
                 </CardBody>
@@ -354,7 +355,7 @@ const MemePetLeagueLanding = () => {
                   <h3 className="text-xl font-bold mb-3 text-purple-500 dark:text-purple-300">
                     Burn
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                  <p className="text-sm text-default-600 dark:text-default-300">
                     Every action is a deflationary interaction
                   </p>
                 </CardBody>
@@ -397,7 +398,7 @@ const MemePetLeagueLanding = () => {
                         {feature.icon}
                       </div>
                       <div>
-                        <h3 className="text-lg font-bold mb-2 text-white">
+                        <h3 className="text-lg font-bold mb-2 text-gray-500">
                           {feature.text}
                         </h3>
                         <p className="text-sm text-gray-300">{feature.desc}</p>

@@ -12,7 +12,7 @@ function App() {
       <Route element={<MemePetLeagueLanding />} path="/" />
       <Route element={<LeaderboardPage />} path="/leaderboard" />
       <Route element={<MemePetDashboard />} path="/dashboard" />
-      <Route element={<DAOPage />} path="/daoPage" />
+      <Route element={<DAOPage />} path="/dao" />
       <Route element={<BattlePage />} path="/battle" />
     </Routes>
   );

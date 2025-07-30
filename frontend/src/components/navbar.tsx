@@ -21,8 +21,12 @@ import {
   HeartFilledIcon,
   SearchIcon,
 } from "@/components/icons";
+import { useNavigate } from "react-router-dom";
+import { WalletSelector } from "./WalletSelector";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -46,7 +50,7 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent className="max-w-6xl mx-auto w-full basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand className="gap-3 max-w-fit">
           <Link
             className="flex justify-start items-center gap-1"
@@ -54,51 +58,32 @@ export const Navbar = () => {
             href="/"
           >
             <span className="text-2xl">🐾</span>
-
-            <p className="font-bold text-2xl">Meme League</p>
+            <p className="font-bold text-2xl">MemeLeague</p>
           </Link>
         </NavbarBrand>
-        
       </NavbarContent>
 
       
 
-      <NavbarContent className="hidden sm:flex basis-3/5" justify="center">
-        <div className="flex items-center gap-4">
-          {siteConfig.navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={clsx(
-                linkStyles.base,
-                "text-lg font-medium text-default-600 hover:text-default-900",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </NavbarContent>
-
       <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
+        className="max-w-6xl mx-auto w-full hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
-          <Button
+          {/* <Button
             isExternal
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
+            onPress={() => navigate("/dashboard")}
             startContent={<HeartFilledIcon className="text-danger" />}
             variant="flat"
           >
             ConnectWallet
-          </Button>
+          </Button> */}
+           <WalletSelector />
         </NavbarItem>
       </NavbarContent>
 
