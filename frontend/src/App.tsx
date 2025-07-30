@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 
-import IndexPage from "@/pages/index";
-import DocsPage from "@/pages/docs";
-import PricingPage from "@/pages/pricing";
-import BlogPage from "@/pages/blog";
-import AboutPage from "@/pages/about";
+import MemePetLeagueLanding from "@/pages/index";
+import LeaderboardPage from "@/pages/leaderboard";
+import MemePetDashboard from "./pages/dashboard";
+import DAOPage from "@/pages/daoPage";
+import BattlePage from "@/pages/battlePager";
 
 function App() {
   return (
     <Routes>
-      <Route element={<IndexPage />} path="/" />
-      <Route element={<DocsPage />} path="/docs" />
-      <Route element={<PricingPage />} path="/pricing" />
-      <Route element={<BlogPage />} path="/blog" />
-      <Route element={<AboutPage />} path="/about" />
+      <Route element={<MemePetLeagueLanding />} path="/" />
+      <Route element={<LeaderboardPage />} path="/leaderboard" />
+      <Route element={<MemePetDashboard />} path="/dashboard" />
+      <Route element={<DAOPage />} path="/daoPage" />
+      <Route element={<BattlePage />} path="/battle" />
     </Routes>
   );
 }

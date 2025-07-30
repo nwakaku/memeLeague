@@ -9,54 +9,42 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Docs",
-      href: "/docs",
-    },
-    {
-      label: "Pricing",
-      href: "/pricing",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-  ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
+      label: "Leaderboard",
+      href: "/leaderboard",
     },
     {
       label: "Dashboard",
       href: "/dashboard",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "DaoPage",
+      href: "/daoPage",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "BattlePage",
+      href: "/battlePage",
+    },
+  ],
+  navMenuItems: [
+    {
+      label: "Home",
+      href: "/",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: "Leaderboard",
+      href: "/leaderboard",
     },
     {
-      label: "Settings",
-      href: "/settings",
+      label: "MemePet",
+      href: "/memePet",
     },
     {
-      label: "Help & Feedback",
-      href: "/help-feedback",
+      label: "DaoPage",
+      href: "/daoPage",
     },
     {
-      label: "Logout",
-      href: "/logout",
+      label: "BattlePage",
+      href: "/battlePage",
     },
   ],
   links: {
