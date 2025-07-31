@@ -22,7 +22,9 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import { useNavigate } from "react-router-dom";
-import { WalletSelector } from "./WalletSelector";
+import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
+
+
 
 export const Navbar = () => {
   const navigate = useNavigate();
