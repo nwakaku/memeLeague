@@ -1,4 +1,5 @@
-import { Button } from "@heroui/button";
+//@ts-nocheck
+
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";

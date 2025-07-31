@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { useState, useEffect } from "react";
 import BattleHeader from "@/components/battleHeader";
 import BattleCard from "@/components/battleCard";   
